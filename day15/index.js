@@ -8,7 +8,7 @@ if (cluster.isPrimary) {// Check if the current process is the primary process
  for (let i = 0; i < numCPUs; i++) {
   cluster.fork(); // Create a new worker
  }
-
+  console.log(`Primary ${process.pid} is running`);
  cluster.on('exit', (worker, code, signal) => {
   console.log(`Worker ${worker.process.pid} died with code ${code} and signal ${signal}`);
   cluster.fork(); // Replace the dead worker
